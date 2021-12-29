@@ -1,0 +1,21 @@
+{
+  "name": "mycoin-cli-web3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node build/cli.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.0",
+    "@types/yargs": "^17.0.8",
+    "typescript": "^4.5.4",
+    "web3": "^1.6.1",
+    "yargs": "^17.3.1"
+  }
+}
