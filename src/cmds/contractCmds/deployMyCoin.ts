@@ -1,5 +1,3 @@
-import {ethers} from "ethers";
-
 import type { Arguments, CommandBuilder } from 'yargs';
 import {ContractService} from "../../services/contract";
 import HDWalletProvider from "@truffle/hdwallet-provider";
