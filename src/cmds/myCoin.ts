@@ -1,7 +1,7 @@
 import type { Arguments, CommandBuilder } from 'yargs';
 
 export const command: string = 'myCoin <command>';
-export const desc: string = 'contract use case';
+export const desc: string = 'myCoin use case';
 
 type Options = {
     command: string;

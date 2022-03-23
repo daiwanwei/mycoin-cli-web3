@@ -7,5 +7,4 @@ yargs(hideBin(process.argv))
     // Default command if none supplied - shows help.
     .strict()
     // Useful aliases.
-    .alias({ h: 'help' })
     .argv;
