@@ -13,8 +13,24 @@ export class MyCoinService{
     }
 
     public async balanceOf(contractAddress: string, accountAddress: string): Promise<BigNumber> {
+        // const myCoin = new this.web3Client.eth.Contract(MY_COIN_ABI as AbiItem[],contractAddress);
+        // let balance = await myCoin.methods.balanceOf(accountAddress).call()
+
         const myCoin = new this.web3Client.eth.Contract(MY_COIN_ABI as AbiItem[],contractAddress);
-        let balance = await myCoin.methods.balanceOf(accountAddress).call()
+        const nonce=await this.web3Client.eth.getTransactionCount(this.signer)
+        const rawTx = {
+            from: this.signer,
+            nonce: nonce,
+            gasLimit: 3000000,
+            to: contractAddress,
+            value: 0,
+            data: myCoin.methods.balanceOf(accountAddress).encodeABI(),
+            chainId: await this.web3Client.eth.getChainId(),
+        };
+
+        const res=await this.web3Client.eth.call(rawTx)
+        const balance=new BigNumber(res)
+        console.log(balance)
         return balance
     }
 
@@ -51,7 +67,6 @@ export class MyCoinService{
             if (err) throw err
             console.log(hash)
         })
-
         console.log(receipt)
     }
 }
